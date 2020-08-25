@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!-- 写入 base.html 中定义的 title -->
+{% block title %}
+    首页
+{% endblock title %}
+
+<!-- 写入 base.html 中定义的 content -->
+{% block content %}
+
+    <!-- 定义放置文章标题的div容器 -->
+    <div class="container">
+        <h1>欢迎来到我的博客 </h1>
+    </div>
+{% endblock content %}
+{% block footer %}
+    <script>document.getElementsByTagName('footer')[0].className += ' fixed-bottom'</script>
+{% endblock footer %}

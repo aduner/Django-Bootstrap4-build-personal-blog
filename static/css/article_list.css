@@ -1,0 +1,11 @@
+.blog_card {
+    border-radius: 25px;
+    background: #fbfcfc
+}
+
+.blog_card h4 {
+    border-radius: 25px!important;
+    margin-top: 0;
+    color: #2471A3;
+    background: #fbfcfc!important;
+}
