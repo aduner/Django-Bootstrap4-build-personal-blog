@@ -37,8 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'article',
     'userprofile',
+    'password_reset',
 ]
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -119,3 +119,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+EMAIL_HOST = 'smtp.qq.com'
+# 改为你自己的邮箱名！
+EMAIL_HOST_USER = 'qshiyu@foxmail.com'
+# 你的邮箱密码
+EMAIL_HOST_PASSWORD = 'ryaqmdujjhvlbbgg'
+# 发送邮件的端口
+EMAIL_PORT = 25
+# 是否使用 TLS
+EMAIL_USE_TLS = True
+# 默认的发件人
+DEFAULT_FROM_EMAIL = 'qsy的博客 <qshiyu@foxmail.com>'

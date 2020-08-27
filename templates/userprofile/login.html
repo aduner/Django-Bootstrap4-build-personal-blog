@@ -6,30 +6,35 @@
 {% block content %}
     <!-- 写文章表单 -->
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <br>
-                <!-- 提交文章的表单 -->
-                <form method="post" action=".">
-                    <!-- Django中需要POST数据的地方都必须有csrf_token -->
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" class="form-control" id="username" name="username">
-                    </div>
-                    <!-- 密码 -->
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" name="password">
-                    </div>
-                    <!-- 提交按钮 -->
-                    <button type="submit" class="btn btn-primary">Login</button>
-                </form>
-            </div>
+    <div class="row">
+        <div class="col-12">
+            <br>
+            <!-- 提交文章的表单 -->
+            <form method="post" action=".">
+                <!-- Django中需要POST数据的地方都必须有csrf_token -->
+                {% csrf_token %}
+                <div class="form-group col-md-4">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" name="username">
+                </div>
+                <!-- 密码 -->
+                <div class="form-group col-md-4">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>
+                <!-- 提交按钮 -->
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-primary ">Login</button>
+                    <a href='{% url "userprofile:register" %}' class="btn btn-primary ">Register</a>
+                </div>
+                <a class="col-md-4 text-info" href='{% url "password_reset_recover" %}'
+                   style="font-size: small">
+                    forget your password?
+                </a>
+            </form>
         </div>
-    </div>
-{% endblock content %}
 
-{% block footer %}
-    <script>document.getElementsByTagName('footer')[0].className += ' fixed-bottom'</script>
-{% endblock footer %}
+
+    </div>
+
+{% endblock content %}
