@@ -1,4 +1,5 @@
-
+blockquote {background-color:#EBF5FB ; border-radius: 25px; padding: 5px}
+blockquote p { margin: 5px 10px;}
 .codehilite .hll { background-color: #49483e }
 .codehilite  { background: #272822; color: #f8f8f2 ;border-radius: 25px;}
 .codehilite .c { color: #75715e } /* Comment */

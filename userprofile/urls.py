@@ -12,4 +12,6 @@ urlpatterns = [
     path('register/', views.user_register, name='register'),
     # 删除
     path('delete/<int:id>/', views.user_delete, name='delete'),
+    # 编辑个人信息
+    path('edit/<int:id>/', views.profile_edit, name='edit'),
 ]

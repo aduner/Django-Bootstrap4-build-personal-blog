@@ -10,7 +10,7 @@
 <!-- 写入 base.html 中定义的 content -->
 {% block content %}
     <style>
-        h1,h2,h3,h4,h5,h6 {
+        h1, h2, h3, h4, h5, h6 {
             font-weight: bold
         }
     </style>
@@ -21,7 +21,6 @@
             <div class="col-9" style="min-height: 578px">
                 <div class="row">
                     <h1 class="title col-10">{{ article.title }}</h1>
-                    {#                <div class=" alert alert-dark">作者：{{ article.author }}</div>#}
                     {#                    <a class="col-2 title" id="delete"#}
                     {#                       href="javascript:if(confirm('确实要删除该内容吗?'))location='{% url "article:article_delete" article.id %}'">#}
                     {#                        Delect#}
@@ -44,6 +43,7 @@
 
                 </div>
                 <!-- 文章正文 -->
+                <h6 class="author">作者：{{ article.author }}</h6>
                 <div class="col-12">
                     <p>{{ article.body|safe }}</p>
                 </div>
