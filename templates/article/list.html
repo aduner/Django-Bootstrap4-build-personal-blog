@@ -26,20 +26,69 @@
                     <a href="{% url 'article:article_detail' article.id %}">
                         <div class="blog_card">
                             <!-- 标题 -->
-                            <h4 class="card-header border-bottom-0">{{ article.title }}</h4>
+                            <h4 class="card-header border-bottom-0">{{ article.title }}
+                                <span style="float: right;">
+                                    <small class="col align-self-end" style="color: gray;font-size: small!important;">
+                                        浏览: {{ article.total_views }}
+                                    </small>
+                            </span>
+                            </h4>
+
                             <!-- 摘要 -->
                             <div class="card-body">
                                 <p class="card-text">{{ article.body|slice:'100' }}...</p>
+
                             </div>
+
                         </div>
                     </a>
                 </div>
             {% endfor %}
 
         </div>
+        <div class="pagination row ">
+            <div class="m-auto">
+        <span class="step-links">
+            <!-- 如果不是第一页，则显示上翻按钮 -->
+            {% if articles.has_previous %}
+                <a href="?page=1" class="btn ">
+                    &laquo; 首页
+                </a>
+                {#                <span>...</span>#}
+                <a href="?page={{ articles.previous_page_number }}"
+                   class="btn "
+                >
+                    {{ articles.previous_page_number }}
+                </a>
+            {% endif %}
+
+            <!-- 当前页面 -->
+            <span class="current btn">
+                {{ articles.number }}
+            </span>
+
+            <!-- 如果不是最末页，则显示下翻按钮 -->
+            {% if articles.has_next %}
+                <a href="?page={{ articles.next_page_number }}"
+                   class="btn"
+                >
+                    {{ articles.next_page_number }}
+                </a>
+                {#                <span>...</span>#}
+                <a href="?page={{ articles.paginator.num_pages }}"
+                   class="btn"
+                >
+                    尾页 &raquo;
+                </a>
+            {% endif %}
+        </span>
+            </div>
+        </div>
     </div>
 
 {% endblock content %}
 {% block footer %}
-    <script>document.getElementsByTagName('footer')[0].classList.remove("fixed-bottom");</script>
+    {% if articles.len >= 4 %}
+        <script>document.getElementsByTagName('footer')[0].classList.remove("fixed-bottom");</script>
+    {% endif %}
 {% endblock footer %}

@@ -5,20 +5,37 @@ import markdown
 from django.contrib.auth.models import User
 from .forms import ArticlePostForm
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 
 
-# Create your views here.
 def article_list(request):
-    # 取出所有博客文章
-    articles = ArticlePost.objects.all()
-    # 需要传递给模板（templates）的对象
+    # 修改变量名称（articles -> article_list）
+    article_list = ArticlePost.objects.all()
+    blog_num = 5
+    # 每页显示文章
+    paginator = Paginator(article_list, blog_num)
+    # 获取 url 中的页码
+    page = request.GET.get('page')
+    # 将导航对象相应的页码内容返回给 articles
+    articles = paginator.get_page(page)
+    articles.len = len(articles)
     context = {'articles': articles}
-    # render函数：载入模板，并返回context对象
     return render(request, 'article/list.html', context)
+
+
+# def article_list(request):
+#     # 取出所有博客文章
+#     articles = ArticlePost.objects.all()
+#     # 需要传递给模板（templates）的对象
+#     context = {'articles': articles}
+#     # render函数：载入模板，并返回context对象
+#     return render(request, 'article/list.html', context)
 
 
 def article_detail(request, id):
     article = ArticlePost.objects.get(id=id)
+    article.total_views += 1
+    article.save(update_fields=['total_views'])
     md = markdown.Markdown(
         extensions=[
             'markdown.extensions.extra',

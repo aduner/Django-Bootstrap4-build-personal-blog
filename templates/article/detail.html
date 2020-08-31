@@ -25,13 +25,14 @@
                     {#                       href="javascript:if(confirm('确实要删除该内容吗?'))location='{% url "article:article_delete" article.id %}'">#}
                     {#                        Delect#}
                     {#                    </a>#}
-                    <a class="modify" id="update" href="{% url "article:article_update" article.id %}">
-                        Updata</a>
-                    <span class="modify">|</span>
-                    <a class="modify" id="delete" href="#" onclick="confirm_safe_delete()">
-                        Delect
-                    </a>
-
+                    {% if user == article.author %}
+                        <a class="modify" id="update" href="{% url "article:article_update" article.id %}">
+                            Updata</a>
+                        <span class="modify">|</span>
+                        <a class="modify" id="delete" href="#" onclick="confirm_safe_delete()">
+                            Delect
+                        </a>
+                    {% endif %}
 
                     <form id="safe_delete"
                           action="{% url 'article:article_safe_delete' article.id %}"
