@@ -9,8 +9,13 @@ from django.core.paginator import Paginator
 
 
 def article_list(request):
-    # 修改变量名称（articles -> article_list）
-    article_list = ArticlePost.objects.all()
+    if request.GET.get('order') == 'total_views':
+        article_list = ArticlePost.objects.all().order_by('-total_views')
+        order = 'total_views'
+    else:
+        article_list = ArticlePost.objects.all()
+        order = 'normal'
+
     blog_num = 5
     # 每页显示文章
     paginator = Paginator(article_list, blog_num)

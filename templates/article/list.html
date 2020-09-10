@@ -16,9 +16,23 @@
 
     <!-- 定义放置文章标题的div容器 -->
     <div class="container">
-        <br>
-        <div class="row mt-2">
 
+        <br>
+        <nav aria-label="breadcrumb" class="col-2 ">
+            <ol class="breadcrumb sort">
+                <li class="breadcrumb-item">
+                    <a href="{% url 'article:article_list' %}">
+                        最新
+                    </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="{% url 'article:article_list' %}?order=total_views">
+                        最热
+                    </a>
+                </li>
+            </ol>
+        </nav>
+        <div class="row mt-2">
             {% for article in articles %}
                 <!-- 文章内容 -->
                 <div class="col-9 mb-4 ">
@@ -51,11 +65,11 @@
         <span class="step-links">
             <!-- 如果不是第一页，则显示上翻按钮 -->
             {% if articles.has_previous %}
-                <a href="?page=1" class="btn ">
+                <a href="?page=1&order={{ order }}" class="btn ">
                     &laquo; 首页
                 </a>
                 {#                <span>...</span>#}
-                <a href="?page={{ articles.previous_page_number }}"
+                <a href="?page={{ articles.previous_page_number }}&order={{ order }}"
                    class="btn "
                 >
                     {{ articles.previous_page_number }}
@@ -69,13 +83,13 @@
 
             <!-- 如果不是最末页，则显示下翻按钮 -->
             {% if articles.has_next %}
-                <a href="?page={{ articles.next_page_number }}"
+                <a href="?page={{ articles.next_page_number }}&order={{ order }}"
                    class="btn"
                 >
                     {{ articles.next_page_number }}
                 </a>
                 {#                <span>...</span>#}
-                <a href="?page={{ articles.paginator.num_pages }}"
+                <a href="?page={{ articles.paginator.num_pages }}&order={{ order }}"
                    class="btn"
                 >
                     尾页 &raquo;
