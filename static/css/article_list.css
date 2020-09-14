@@ -4,23 +4,32 @@
 }
 
 .blog_card h4 {
-    border-radius: 25px!important;
+    border-radius: 25px !important;
     margin-top: 0;
     color: #2471A3;
-    background: #fbfcfc!important;
+    background: #fbfcfc !important;
 }
 
-.sort{
+.sort {
     border-radius: 25px;
     background: #FDFEFE
 }
 
-.sort a{
-    color: #154360 ;
+.sort a {
+    color: #154360;
     font-weight: bold;
 }
 
-.sort a:hover{
-    color: #E74C3C ;
+.sort a:hover {
+    color: #E74C3C;
     font-weight: bold;
 }
+
+.search_article{
+    margin-top: 3.5px;
+}
+
+.search_article input{
+    border-radius: 25px
+}
+
