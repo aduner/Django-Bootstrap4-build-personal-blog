@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from article.models import ArticlePost
 from .forms import CommentForm
+from .models import Comment
 
 
 # Create your views here.
@@ -23,3 +24,4 @@ def post_comment(request, article_id):
             return HttpResponse("There is something wrong with the form, please fill it out again")
     else:
         return HttpResponse('Only the POST method is supported.')
+
